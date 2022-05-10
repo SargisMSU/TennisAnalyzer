@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Tab text="Фильтр" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+     fx:controller="com.example.tennis.fx.FilterController">
+    <VBox>
+        <GridPane alignment="CENTER" gridLinesVisible="true" maxHeight="100.0" prefHeight="88.0" VBox.vgrow="ALWAYS">
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Тип"/>
+                <ChoiceBox fx:id="countryChoiceBox" value="Все">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Все"/>
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label text="Счет 1" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="15.0" fx:id="x6"/>
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="scoreFirstTF" maxWidth="500.0" prefWidth="35.0" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets right="3.0" fx:id="x3"/>
+                    </HBox.margin>
+                </TextField>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Label text="Кол-во подходящих матчей:"/>
+                <Label id="countTF" fx:id="countFilteredLabel"/>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" prefHeight="21.0" prefWidth="278.0" spacing="5.0"
+                  GridPane.columnIndex="3" GridPane.rowIndex="3">
+                <TextField fx:id="coefTF" prefWidth="70.0" promptText="коэф."/>
+                <TextField fx:id="betTF" prefWidth="70.0" promptText="ставка"/>
+                <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onFilterClick"
+                        text="Результат"/>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label text="Счет 2" HBox.hgrow="ALWAYS" HBox.margin="$x6"/>
+                <TextField fx:id="scoreSecondTF" maxWidth="500.0" prefWidth="80.0" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets right="5.0" fx:id="x5"/>
+                    </HBox.margin>
+                </TextField>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <Label text="Коэф. лидера" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="3.0" fx:id="x2"/>
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="coefLiderTF" maxWidth="500.0" prefWidth="50.0" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" prefHeight="28.0" prefWidth="312.0000999999975" spacing="5.0"
+                  GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"
+                  GridPane.vgrow="ALWAYS">
+                <Label text="Коэф.пр." HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="5.0" fx:id="x4"/>
+                    </HBox.margin>
+                </Label>
+                <GridPane.margin>
+                    <Insets/>
+                </GridPane.margin>
+                <TextField fx:id="coef2TF" maxWidth="500.0" prefWidth="50.0" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Рейтинг лидера" HBox.hgrow="ALWAYS"
+                       HBox.margin="$x2"/>
+                <TextField fx:id="rankLeaderTF" maxWidth="500.0" prefWidth="80.0" HBox.hgrow="ALWAYS"
+                           HBox.margin="$x3"/>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Рейтинг пр." HBox.hgrow="ALWAYS"
+                       HBox.margin="$x4"/>
+                <TextField fx:id="rank2TF" maxWidth="500.0" prefWidth="80.0" HBox.hgrow="ALWAYS" HBox.margin="$x5"/>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                <Label text="Мин. разница " HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="minDiffTF" alignment="CENTER" maxWidth="100.0" prefWidth="50.0" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets bottom="3.0" left="5.0" right="5.0" top="3.0" fx:id="x1"/>
+                    </HBox.margin>
+                </TextField>
+                <ChoiceBox fx:id="minDiffTypeChoiceBox" value="Абс." HBox.hgrow="ALWAYS">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Абс."/>
+                            <String fx:value="%"/>
+                        </FXCollections>
+                    </items>
+                    <HBox.margin>
+                        <Insets right="5.0" fx:id="x7"/>
+                    </HBox.margin>
+                </ChoiceBox>
+            </HBox>
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="200.0"/>
+                <ColumnConstraints hgrow="ALWAYS" prefWidth="200.0"/>
+                <ColumnConstraints hgrow="ALWAYS" prefWidth="200.0"/>
+                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="311.0" prefWidth="250.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+            </rowConstraints>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+            <CheckBox fx:id="rankUnderCheckBox" text="Рейтинг лидера меньше" wrapText="true" GridPane.columnIndex="2"
+                      GridPane.columnSpan="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2"
+                      GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS"/>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Label text="Общее кол-во матчей:"/>
+                <Label id="countTF" fx:id="fullCountLabel"/>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                <Label fx:id="resultLabel"/>
+                <Label id="resultLabel" fx:id="percentLabel" underline="true">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Label>
+            </HBox>
+            <CheckBox fx:id="winnerInHomeCheckBox" mnemonicParsing="false" text="Исключить местного андердога"
+                      GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                      GridPane.rowIndex="0" GridPane.vgrow="ALWAYS"/>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2"
+                  GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0"
+                  GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                <Label alignment="CENTER" contentDisplay="CENTER" text="БК" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="5.0" right="5.0"/>
+                    </HBox.margin>
+                </Label>
+                <ChoiceBox fx:id="bookmakerChoiceBox" HBox.hgrow="ALWAYS">
+                </ChoiceBox>
+            </HBox>
+            <HBox id="HBox" alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label minWidth="50.0" text="Турнир" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="5.0" fx:id="x4"/>
+                    </HBox.margin>
+                </Label>
+                <ChoiceBox fx:id="tournamentChoiceBox" value="Все" HBox.hgrow="ALWAYS">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Все"/>
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+            </HBox>
+        </GridPane>
+        <TableView fx:id="gamesTableView" VBox.vgrow="ALWAYS">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+            <columns>
+                <TableColumn maxWidth="700.0" text="Матч" fx:id="matchColumn"/>
+                <TableColumn maxWidth="700.0" text="Счет" fx:id="scoreColumn"/>
+                <TableColumn maxWidth="300.0" text="Коэф.1" fx:id="coef1Column"/>
+                <TableColumn maxWidth="300.0" text="Коэф.2" fx:id="coef2Column"/>
+                <TableColumn maxWidth="300.0" text="Рейтинг 1" fx:id="rank1Column"/>
+                <TableColumn maxWidth="300.0" text="Рейтинг 2" fx:id="rank2Column"/>
+            </columns>
+        </TableView>
+    </VBox>
+</Tab>

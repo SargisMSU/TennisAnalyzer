@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.TabPane?>
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.tennis.fx.MainController">
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" fx:id="tabPane">
+        <fx:include source="filter_tab.fxml" fx:id="filterView"/>
+        <fx:include source="parser_tab.fxml" fx:id="parserView"/>
+    </TabPane>
+</VBox>
